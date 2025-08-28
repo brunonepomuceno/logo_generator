@@ -1,4 +1,6 @@
 *
 !index.html
 !READ.ME.txt
+!static/
+!static/**
 !.gitignore
