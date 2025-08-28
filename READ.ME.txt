@@ -1,0 +1,56 @@
+#criar ambiente virtual
+python3 -m venv venv
+
+#ativar ambiente virtual
+source venv/bin/activate
+
+#instalar o PyTorch e a versão mais recente do PyTorch e garante que o backend "mps" será usado corretamente.
+pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cpu
+
+#Instale as bibliotecas necessárias com este comando:
+pip install torch diffusers transformers accelerate safetensors
+
+# Instala as dependências do Hugging Face e outras bibliotecas
+pip install diffusers transformers accelerate safetensors Flask Flask-Cors peft
+
+torch: A biblioteca de deep learning principal.
+diffusers: A biblioteca central que gerencia o pipeline de geração.
+transformers: Necessária para carregar os modelos de texto.
+accelerate: Ajuda a otimizar o uso da GPU.
+safetensors: Para carregar o formato de arquivo dos modelos de forma segura e rápida.
+
+#atualizar o diffusers
+pip install --upgrade diffusers
+
+#pacote extra para o diffusers carregar o LoRA
+pip install peft
+
+#Execute o Script
+python logo_generator.py
+
+#executar o script + prompt inline
+python logo_generator-user_prompt.py "a majestic lion, elegant, simple" 
+
+#desativar ambiente virtual
+deactivate
+
+#remove a pasta do ambiente virtual
+rm -rf venv
+
+
+############### SERVIDOR ###############
+
+#servidor API em python
+pip install Flask
+
+#erro clássico de CORS (Cross-Origin Resource Sharing)
+
+#rodar o servidor
+python3 app.py
+
+############### SERVIDOR EXTERNO ###############
+
+#API Local com ngrok
+brew install ngrok
+ngrok config add-authtoken 31vh4aBrb7drgm0o3Z6jYT4uLtt_3Tv7g4mX4CcVhMgpB2D8M
+ngrok http 5000 OR ngrok http http://localhost:8080
