@@ -395,8 +395,70 @@ async function enviarPrompt(event) {
 
         if (response.ok) {
             showStatus('Sucesso: ' + data.message, 'success');
+            let resultadoDiv = document.getElementById('resultado');
+            if (!resultadoDiv) {
+                resultadoDiv = document.createElement('div');
+                resultadoDiv.id = 'resultado';
+                resultadoDiv.style.marginTop = '32px';
+                document.querySelector('.main-container').appendChild(resultadoDiv);
+            }
+            
+            // Usar o filename retornado pela API
+            const imageFilename = data.filename || `${prompt.trim().split(/\s|,/)[0]}.png`;
+            
+            // Detectar se estamos rodando localmente ou através do servidor
+            const isLocalFile = window.location.protocol === 'file:';
+            const baseUrl = isLocalFile ? 'http://localhost:5000' : '';
+            const imageUrl = baseUrl + (data.imageUrl || `/static/${imageFilename}`);
+            
+            resultadoDiv.innerHTML = `
+                <div style="text-align: center;">
+                    <img src="${imageUrl}" 
+                         alt="Logo gerada" 
+                         style="max-width:300px;display:block;margin:16px auto;border-radius:12px;border:1px solid #eee;"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+                         onload="this.nextElementSibling.style.display='none';">
+                    <div style="display:none; color: #666; font-size: 14px;">
+                        Imagem carregada com sucesso: ${imageFilename}
+                    </div>
+                </div>
+                <button class="primary-button" id="baixarImagemBtn" style="width:auto;margin-top:8px;">Baixar imagem</button>
+            `;
+            
+            // Adicionar evento de clique para download
+            document.getElementById('baixarImagemBtn').onclick = async function() {
+                try {
+                    const response = await fetch(imageUrl);
+                    if (!response.ok) {
+                        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                    }
+                    const blob = await response.blob();
+                    const url = window.URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.download = imageFilename;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    window.URL.revokeObjectURL(url);
+                } catch (err) {
+                    console.error('Erro ao baixar:', err);
+                    alert('Erro ao baixar a imagem: ' + err.message);
+                }
+            };
+            
+            // Verificar se a imagem carregou corretamente
+            setTimeout(() => {
+                const img = resultadoDiv.querySelector('img');
+                if (img && img.naturalWidth === 0) {
+                    showStatus('Aviso: A imagem pode não ter carregado completamente. Tente recarregar a página.', 'info');
+                }
+            }, 1000);
+            
         } else {
             showStatus('Erro: ' + (data.details || data.error), 'error');
+            let resultadoDiv = document.getElementById('resultado');
+            if (resultadoDiv) resultadoDiv.innerHTML = '';
         }
 
     } catch (error) {
