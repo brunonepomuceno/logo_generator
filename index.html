@@ -409,18 +409,38 @@ async function enviarPrompt(event) {
             // Detectar se estamos rodando localmente ou através do servidor
             const isLocalFile = window.location.protocol === 'file:';
             const baseUrl = isLocalFile ? 'http://localhost:5000' : '';
-            const imageUrl = baseUrl + (data.imageUrl || `/static/${imageFilename}`);
+            
+            // Usar a URL da API (GitHub se disponível, senão local)
+            const imageUrl = data.imageUrl || (baseUrl + `/static/${imageFilename}`);
+            const source = data.source || 'local';
+            const githubUrl = data.githubUrl;
             
             resultadoDiv.innerHTML = `
                 <div style="text-align: center;">
                     <img src="${imageUrl}" 
                          alt="Logo gerada" 
                          style="max-width:300px;display:block;margin:16px auto;border-radius:12px;border:1px solid #eee;"
-                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
-                         onload="this.nextElementSibling.style.display='none';">
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block'; this.nextElementSibling.innerHTML='Erro ao carregar imagem: ' + this.src;"
+                         onload="this.style.display='block'; this.nextElementSibling.style.display='none';">
                     <div style="display:none; color: #666; font-size: 14px;">
                         Imagem carregada com sucesso: ${imageFilename}
                     </div>
+                    
+                    ${source === 'github' ? `
+                        <div style="margin: 8px 0; padding: 8px; background-color: #d4edda; color: #155724; border-radius: 8px; font-size: 14px;">
+                            ✅ Imagem carregada do GitHub
+                        </div>
+                    ` : `
+                        <div style="margin: 8px 0; padding: 8px; background-color: #fff3cd; color: #856404; border-radius: 8px; font-size: 14px;">
+                            ⚠️ Imagem carregada localmente
+                        </div>
+                    `}
+                    
+                    ${githubUrl ? `
+                        <div style="margin: 8px 0; padding: 8px; background-color: #e2e3e5; color: #383d41; border-radius: 8px; font-size: 12px; word-break: break-all;">
+                            <strong>GitHub:</strong> <a href="${githubUrl}" target="_blank" style="color: #007bff;">${githubUrl}</a>
+                        </div>
+                    ` : ''}
                 </div>
                 <button class="primary-button" id="baixarImagemBtn" style="width:auto;margin-top:8px;">Baixar imagem</button>
             `;
