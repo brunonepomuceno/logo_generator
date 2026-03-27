@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerador de logos</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <style>
         /* ================================
            FUEL DS - DESIGN TOKENS
         ================================ */
-        
+
         :root {
             /* Primitive Colors - Neutral */
             --neutral-50: #F4F4F5;
@@ -20,40 +22,40 @@
             --neutral-600: #52525B;
             --neutral-white: #FFFFFF;
             --neutral-black: #111111;
-            
+
             /* Primitive Colors - Primary */
             --primary-50: #EFF6FF;
             --primary-500: #3B82F6;
             --primary-600: #2563EB;
             --primary-700: #1D4ED8;
             --primary-focus: #1D4ED8;
-            
+
             /* Primitive Colors - Success */
             --success-50: #DCFCE7;
             --success-500: #22C55E;
             --success-700: #15803D;
-            
+
             /* Primitive Colors - Danger */
             --danger-50: #FEF2F2;
             --danger-500: #EF4444;
             --danger-700: #B91C1C;
-            
+
             /* Primitive Colors - Support */
             --support-50: #FFFBEB;
             --support-500: #F59E0B;
-            
+
             /* Semantic Colors - Surface */
             --surface-default: var(--neutral-white);
             --surface-muted: var(--neutral-50);
             --surface-subtle: var(--neutral-200);
             --surface-inverse: var(--neutral-black);
-            
+
             /* Semantic Colors - Text */
             --text-default: var(--neutral-black);
             --text-muted: var(--neutral-600);
             --text-subtle: var(--neutral-400);
             --text-inverse: var(--neutral-white);
-            
+
             /* Primitive Spacing */
             --spacing-1: 4px;
             --spacing-2: 8px;
@@ -65,11 +67,11 @@
             --spacing-8: 32px;
             --spacing-9: 36px;
             --spacing-10: 40px;
-            
+
             /* Typography - Font Family */
             --font-family-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             --font-family-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            
+
             /* Typography - Font Sizes */
             --font-size-1: 12px;
             --font-size-2: 14px;
@@ -83,7 +85,7 @@
             --font-size-10: 48px;
             --font-size-11: 64px;
             --font-size-12: 96px;
-            
+
             /* Typography - Font Weights */
             --font-weight-light: 300;
             --font-weight-regular: 400;
@@ -91,37 +93,37 @@
             --font-weight-semibold: 600;
             --font-weight-bold: 700;
             --font-weight-extrabold: 800;
-            
+
             /* Typography - Line Heights */
             --line-height-tight: 1.1;
             --line-height-snug: 1.3;
             --line-height-normal: 1.5;
             --line-height-roomy: 1.6;
             --line-height-spacious: 1.8;
-            
+
             /* Border Radius */
             --border-radius-sm: 8px;
             --border-radius-md: 12px;
             --border-radius-lg: 16px;
             --border-radius-xl: 24px;
             --border-radius-pill: 9999px;
-            
+
             /* Shadows */
             --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
             --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
-        
+
         /* ================================
            GLOBAL STYLES
         ================================ */
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: var(--font-family-body);
             font-size: var(--font-size-3);
@@ -135,11 +137,11 @@
             min-height: 100vh;
             padding: var(--spacing-5);
         }
-        
+
         /* ================================
            COMPONENT STYLES
         ================================ */
-        
+
         .main-container {
             background-color: var(--surface-default);
             padding: var(--spacing-10);
@@ -150,7 +152,7 @@
             max-width: 500px;
             border: 1px solid var(--surface-subtle);
         }
-        
+
         .page-title {
             font-family: var(--font-family-display);
             font-size: var(--font-size-8);
@@ -159,7 +161,7 @@
             color: var(--text-default);
             margin-bottom: var(--spacing-6);
         }
-        
+
         .input-field {
             width: 100%;
             min-height: 120px;
@@ -176,17 +178,17 @@
             resize: vertical;
             transition: all 0.2s ease-in-out;
         }
-        
+
         .input-field:focus {
             outline: none;
             border-color: var(--primary-focus);
             box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
-        
+
         .input-field::placeholder {
             color: var(--text-subtle);
         }
-        
+
         .primary-button {
             background-color: var(--primary-500);
             color: var(--text-inverse);
@@ -206,25 +208,25 @@
             justify-content: center;
             gap: var(--spacing-2);
         }
-        
+
         .primary-button:hover {
             background-color: var(--primary-600);
             transform: translateY(-1px);
             box-shadow: var(--shadow-md);
         }
-        
+
         .primary-button:active {
             transform: translateY(0);
             box-shadow: var(--shadow-sm);
         }
-        
+
         .primary-button:disabled {
             background-color: var(--neutral-400);
             cursor: not-allowed;
             transform: none;
             box-shadow: none;
         }
-        
+
         .status-message {
             margin-top: var(--spacing-6);
             padding: var(--spacing-4);
@@ -235,31 +237,31 @@
             text-align: center;
             transition: all 0.2s ease-in-out;
         }
-        
+
         .status-message.success {
             background-color: var(--success-50);
             color: var(--success-700);
             border: 1px solid var(--success-500);
         }
-        
+
         .status-message.error {
             background-color: var(--danger-50);
             color: var(--danger-700);
             border: 1px solid var(--danger-500);
         }
-        
+
         .status-message.loading {
             background-color: var(--primary-50);
             color: var(--primary-700);
             border: 1px solid var(--primary-500);
         }
-        
+
         .status-message.info {
             background-color: var(--support-50);
             color: var(--support-500);
             border: 1px solid var(--support-500);
         }
-        
+
         .loading-spinner {
             display: inline-block;
             width: var(--spacing-4);
@@ -270,50 +272,53 @@
             animation: spin 1s ease-in-out infinite;
             margin-right: var(--spacing-2);
         }
-        
+
         @keyframes spin {
-            to { transform: rotate(360deg); }
+            to {
+                transform: rotate(360deg);
+            }
         }
-        
+
         /* ================================
            RESPONSIVE DESIGN
         ================================ */
-        
+
         @media (max-width: 640px) {
             body {
                 padding: var(--spacing-4);
             }
-            
+
             .main-container {
                 padding: var(--spacing-6);
             }
-            
+
             .page-title {
                 font-size: var(--font-size-6);
                 margin-bottom: var(--spacing-5);
             }
-            
+
             .input-field {
                 min-height: 100px;
                 margin-bottom: var(--spacing-5);
             }
         }
-        
+
         @media (max-width: 480px) {
             .main-container {
                 padding: var(--spacing-5);
             }
-            
+
             .page-title {
                 font-size: var(--font-size-5);
             }
         }
-        
+
         /* ================================
            ACCESSIBILITY
         ================================ */
-        
+
         @media (prefers-reduced-motion: reduce) {
+
             *,
             *::before,
             *::after {
@@ -322,7 +327,7 @@
                 transition-duration: 0.01ms !important;
             }
         }
-        
+
         .visually-hidden {
             position: absolute;
             width: 1px;
@@ -336,54 +341,50 @@
         }
     </style>
 </head>
+
 <body>
 
-<main class="main-container">
-    <h1 class="page-title">Gerador de Logos</h1>
-    
-    <form class="logo-form" onsubmit="enviarPrompt(event)">
-        <label for="promptInput" class="visually-hidden">
-            Descrição do logo que você deseja gerar
-        </label>
-        <textarea 
-            id="promptInput" 
-            class="input-field"
-            placeholder="Descreva o logo que você quer gerar..."
-            required
-            aria-describedby="status"
-        ></textarea>
-        
-        <button type="submit" class="primary-button" id="generateButton">
-            <span id="buttonText">Gerar Logo</span>
-        </button>
-    </form>
-    
-    <div id="status" class="status-message" role="status" aria-live="polite" style="display: none;"></div>
-</main>
+    <main class="main-container">
+        <h1 class="page-title">Gerador de Logos</h1>
 
-<script>
-async function enviarPrompt(event) {
-    if (event) {
-        event.preventDefault();
-    }
-    
-    const prompt = document.getElementById('promptInput').value;
-    const statusDiv = document.getElementById('status');
-    const generateButton = document.getElementById('generateButton');
-    const buttonText = document.getElementById('buttonText');
+        <form class="logo-form" onsubmit="enviarPrompt(event)">
+            <label for="promptInput" class="visually-hidden">
+                Descrição do logo que você deseja gerar
+            </label>
+            <textarea id="promptInput" class="input-field" placeholder="Descreva o logo que você quer gerar..." required
+                aria-describedby="status"></textarea>
 
-    if (prompt.trim() === '') {
-        showStatus('Por favor, insira uma descrição para o logo.', 'error');
-        return;
-    }
+            <button type="submit" class="primary-button" id="generateButton">
+                <span id="buttonText">Gerar Logo</span>
+            </button>
+        </form>
 
-    // Estado de loading
-    generateButton.disabled = true;
-    buttonText.innerHTML = '<span class="loading-spinner"></span>Gerando logo...';
-    showStatus('Gerando logo... Por favor, aguarde.', 'loading');
+        <div id="status" class="status-message" role="status" aria-live="polite" style="display: none;"></div>
+    </main>
+
+    <script>
+        async function enviarPrompt(event) {
+            if (event) {
+                event.preventDefault();
+            }
+
+            const prompt = document.getElementById('promptInput').value;
+            const statusDiv = document.getElementById('status');
+            const generateButton = document.getElementById('generateButton');
+            const buttonText = document.getElementById('buttonText');
+
+            if (prompt.trim() === '') {
+                showStatus('Por favor, insira uma descrição para o logo.', 'error');
+                return;
+            }
+
+            // Estado de loading
+            generateButton.disabled = true;
+            buttonText.innerHTML = '<span class="loading-spinner"></span>Gerando logo...';
+            showStatus('Gerando logo... Por favor, aguarde.', 'loading');
 
     try {
-        const response = await fetch('https://01e4-2804-14d-4cdc-aa02-c838-4a6c-3a3e-6f07.ngrok-free.app/gerar_logo', {
+        const response = await fetch('https://f37d38b684a0.ngrok-free.app/gerar_logo', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -391,45 +392,45 @@ async function enviarPrompt(event) {
             body: JSON.stringify({ prompt: prompt })
         });
 
-        const data = await response.json();
+                const data = await response.json();
 
-        if (response.ok) {
-            showStatus('Sucesso: ' + data.message, 'success');
-            let resultadoDiv = document.getElementById('resultado');
-            if (!resultadoDiv) {
-                resultadoDiv = document.createElement('div');
-                resultadoDiv.id = 'resultado';
-                resultadoDiv.style.marginTop = '32px';
-                document.querySelector('.main-container').appendChild(resultadoDiv);
-            }
-            
-            // Usar o filename retornado pela API
-            const imageFilename = data.filename || `${prompt.trim().split(/\s|,/)[0]}.png`;
-            
-            // Detectar se estamos rodando localmente ou através do servidor
-            const isLocalFile = window.location.protocol === 'file:';
-            const baseUrl = isLocalFile ? 'http://localhost:5000' : '';
-            
-            // Usar a URL da API (GitHub se disponível, senão local)
-            const imageUrl = data.imageUrl || (baseUrl + `/static/${imageFilename}`);
-            const source = data.source || 'local';
-            const githubUrl = data.githubUrl;
-            
-            resultadoDiv.innerHTML = `
+                if (response.ok) {
+                    showStatus('Sucesso: ' + data.message, 'success');
+                    let resultadoDiv = document.getElementById('resultado');
+                    if (!resultadoDiv) {
+                        resultadoDiv = document.createElement('div');
+                        resultadoDiv.id = 'resultado';
+                        resultadoDiv.style.marginTop = '32px';
+                        document.querySelector('.main-container').appendChild(resultadoDiv);
+                    }
+
+                    // Usar o filename retornado pela API
+                    const imageFilename = data.filename || `${prompt.trim().split(/\s|,/)[0]}.png`;
+
+                    // Configurado para apontar para o ngrok diretamente
+                    const baseUrl = 'https://01e4-2804-14d-4cdc-aa02-c838-4a6c-3a3e-6f07.ngrok-free.app';
+
+                    // Usar a URL da API, priorizando o Github. Fallback para Ngrok.
+                    const imageUrl = data.imageUrl || (baseUrl + `/static/${imageFilename}`);
+                    const localFallbackUrl = baseUrl + `/static/${imageFilename}`;
+                    const source = data.source || 'local';
+                    const githubUrl = data.githubUrl;
+
+                    resultadoDiv.innerHTML = `
                 <div style="text-align: center;">
                     <img src="${imageUrl}" 
                          alt="Logo gerada" 
                          style="max-width:300px;display:block;margin:16px auto;border-radius:12px;border:1px solid #eee;"
-                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block'; this.nextElementSibling.innerHTML='Erro ao carregar imagem: ' + this.src;"
+                         onerror="if(this.src !== '${localFallbackUrl}' && this.getAttribute('data-fallback-tried') !== 'true') { this.setAttribute('data-fallback-tried', 'true'); this.src='${localFallbackUrl}'; var s=document.getElementById('github-status'); if(s)s.innerHTML='⚠️ GitHub indisponível. Imagem carregada via Ngrok.'; } else { this.style.display='none'; this.nextElementSibling.style.display='block'; this.nextElementSibling.innerHTML='Erro ao carregar imagem: ' + this.src; }"
                          onload="this.style.display='block'; this.nextElementSibling.style.display='none';">
-                    <div style="display:none; color: #666; font-size: 14px;">
+                    <div style="display:none; color: #666; font-size: 14px; margin-top: 8px;">
                         Imagem carregada com sucesso: ${imageFilename}
                     </div>
                     
                     ${source === 'github' ? `
-                        <div style="margin: 8px 0; padding: 8px; background-color: #d4edda; color: #155724; border-radius: 8px; font-size: 14px;">
-                            ✅ Imagem carregada do GitHub
-                        </div>
+                        <div style="margin-top: 16px; font-size: 14px; background-color: ${source === 'github' ? '#e6f4ea' : '#fff3e0'}; color: ${source === 'github' ? '#1e8e3e' : '#e65100'}; padding: 8px; border-radius: 4px; display: inline-block;">
+                        <span id="github-status">${source === 'github' ? '✅ Imagem carregada do GitHub' : '⚠️ Imagem carregada localmente'}</span>
+                    </div>
                     ` : `
                         <div style="margin: 8px 0; padding: 8px; background-color: #fff3cd; color: #856404; border-radius: 8px; font-size: 14px;">
                             ⚠️ Imagem carregada localmente
@@ -444,73 +445,74 @@ async function enviarPrompt(event) {
                 </div>
                 <button class="primary-button" id="baixarImagemBtn" style="width:auto;margin-top:8px;">Baixar imagem</button>
             `;
-            
-            // Adicionar evento de clique para download
-            document.getElementById('baixarImagemBtn').onclick = async function() {
-                try {
-                    const response = await fetch(imageUrl);
-                    if (!response.ok) {
-                        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-                    }
-                    const blob = await response.blob();
-                    const url = window.URL.createObjectURL(blob);
-                    const link = document.createElement('a');
-                    link.href = url;
-                    link.download = imageFilename;
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-                    window.URL.revokeObjectURL(url);
-                } catch (err) {
-                    console.error('Erro ao baixar:', err);
-                    alert('Erro ao baixar a imagem: ' + err.message);
+
+                    // Adicionar evento de clique para download
+                    document.getElementById('baixarImagemBtn').onclick = async function () {
+                        try {
+                            const response = await fetch(imageUrl);
+                            if (!response.ok) {
+                                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                            }
+                            const blob = await response.blob();
+                            const url = window.URL.createObjectURL(blob);
+                            const link = document.createElement('a');
+                            link.href = url;
+                            link.download = imageFilename;
+                            document.body.appendChild(link);
+                            link.click();
+                            document.body.removeChild(link);
+                            window.URL.revokeObjectURL(url);
+                        } catch (err) {
+                            console.error('Erro ao baixar:', err);
+                            alert('Erro ao baixar a imagem: ' + err.message);
+                        }
+                    };
+
+                    // Verificar se a imagem carregou corretamente
+                    setTimeout(() => {
+                        const img = resultadoDiv.querySelector('img');
+                        if (img && img.naturalWidth === 0) {
+                            showStatus('Aviso: A imagem pode não ter carregado completamente. Tente recarregar a página.', 'info');
+                        }
+                    }, 1000);
+
+                } else {
+                    showStatus('Erro: ' + (data.details || data.error), 'error');
+                    let resultadoDiv = document.getElementById('resultado');
+                    if (resultadoDiv) resultadoDiv.innerHTML = '';
                 }
-            };
-            
-            // Verificar se a imagem carregou corretamente
-            setTimeout(() => {
-                const img = resultadoDiv.querySelector('img');
-                if (img && img.naturalWidth === 0) {
-                    showStatus('Aviso: A imagem pode não ter carregado completamente. Tente recarregar a página.', 'info');
-                }
-            }, 1000);
-            
-        } else {
-            showStatus('Erro: ' + (data.details || data.error), 'error');
-            let resultadoDiv = document.getElementById('resultado');
-            if (resultadoDiv) resultadoDiv.innerHTML = '';
+
+            } catch (error) {
+                showStatus('Erro de conexão com a API. Certifique-se de que o servidor está rodando.', 'error');
+            } finally {
+                // Restaurar estado do botão
+                generateButton.disabled = false;
+                buttonText.textContent = 'Gerar Logo';
+            }
         }
 
-    } catch (error) {
-        showStatus('Erro de conexão com a API. Certifique-se de que o servidor está rodando.', 'error');
-    } finally {
-        // Restaurar estado do botão
-        generateButton.disabled = false;
-        buttonText.textContent = 'Gerar Logo';
-    }
-}
+        function showStatus(message, type) {
+            const statusDiv = document.getElementById('status');
+            statusDiv.textContent = message;
+            statusDiv.className = `status-message ${type}`;
+            statusDiv.style.display = 'block';
 
-function showStatus(message, type) {
-    const statusDiv = document.getElementById('status');
-    statusDiv.textContent = message;
-    statusDiv.className = `status-message ${type}`;
-    statusDiv.style.display = 'block';
-    
-    // Auto-hide success messages after 5 seconds
-    if (type === 'success') {
-        setTimeout(() => {
-            statusDiv.style.display = 'none';
-        }, 5000);
-    }
-}
+            // Auto-hide success messages after 5 seconds
+            if (type === 'success') {
+                setTimeout(() => {
+                    statusDiv.style.display = 'none';
+                }, 5000);
+            }
+        }
 
-// Adicionar suporte a Enter para envio
-document.getElementById('promptInput').addEventListener('keydown', function(event) {
-    if (event.key === 'Enter' && (event.ctrlKey || event.metaKey)) {
-        enviarPrompt();
-    }
-});
-</script>
+        // Adicionar suporte a Enter para envio
+        document.getElementById('promptInput').addEventListener('keydown', function (event) {
+            if (event.key === 'Enter' && (event.ctrlKey || event.metaKey)) {
+                enviarPrompt();
+            }
+        });
+    </script>
 
 </body>
+
 </html>
